@@ -28,4 +28,5 @@
     "test": "mocha",
     "minify": "uglifyjs chess.js -c -m --comments 'license' > chess.min.js"
   }
+  "typings": "index.d.ts",
 }
