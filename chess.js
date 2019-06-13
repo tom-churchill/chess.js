@@ -1744,7 +1744,7 @@ var Chess = function(fen) {
  * environment */
 if (typeof exports !== 'undefined') exports.Chess = Chess;
 /* export Chess object for any RequireJS compatible environment */
-if (typeof define !== 'undefined')
-  define(function() {
-    return Chess;
-  });
+//if (typeof define !== 'undefined')
+//  define(function() {
+//    return Chess;
+//  });
