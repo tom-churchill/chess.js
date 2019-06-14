@@ -3,6 +3,8 @@
 // Definitions by: Jacob Fischer <https://github.com/JacobFischer>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
+export type Header = { [key: string]: string | undefined };
+
 /**
  * One of the possible sqaures on a chess board in san format,
  * e.g. "a8" to "h1".
@@ -361,8 +363,8 @@ export interface ChessInstance {
      * @param args (optional) Header pairs to store in the header.
      * @returns The current header information after storing any values.
      */
-    header(...args: string[]): { [key: string]: string | undefined };
-    headerList(...args: string[]): { [key: string]: string | undefined };
+    header(...args: string[]): Header;
+    getHeaderOrder(): [string];
 
     /**
      * Returns a string containing an ASCII diagram of the current position.
