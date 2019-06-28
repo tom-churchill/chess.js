@@ -4,6 +4,12 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 export type Header = { [key: string]: string | undefined };
+export type PromotionType = "n" | "b" | "r" | "q";
+export type PieceType = "p" | "n" | "b" | "r" | "q" | "k";
+export interface pieceSquareType {
+    type: string;
+    color: string;
+}
 
 /**
  * One of the possible sqaures on a chess board in san format,
@@ -44,7 +50,7 @@ export interface ShortMove {
      * - "r" for Rook
      * - "q" for Queen
      */
-    promotion?: "n" | "b" | "r" | "q";
+    promotion?: PromotionType;
 }
 
 /**
@@ -70,7 +76,7 @@ export interface Move extends ShortMove {
      * - "q" for Queen
      * - "k" for King
      */
-    piece: "p" | "n" | "b" | "r" | "q" | "k";
+    piece: PieceType;
 
     /** The Standard Algebraic Notation (SAN) representation of the move */
     san: string;
@@ -371,6 +377,8 @@ export interface ChessInstance {
      * @returns A string containing an ASCII diagram of the current position.
      */
     ascii(): string;
+    
+    board(): Array<Array<pieceSquareType>>;
 
     /**
      * Returns the current side to move.
