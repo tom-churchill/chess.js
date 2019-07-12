@@ -191,7 +191,10 @@ var Chess = function(fen) {
     half_moves = 0;
     move_number = 1;
     history = [];
-    if (!keep_headers) header = {};
+    if (!keep_headers) {
+      header = {};
+      headerOrder = []
+    }
     update_setup(generate_fen());
   }
 
