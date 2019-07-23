@@ -988,6 +988,7 @@ var Chess = function(fen) {
     }
 
     var move = old.move;
+    move.move_numer = old.move_number;
     kings = old.kings;
     turn = old.turn;
     castling = old.castling;
@@ -1508,8 +1509,8 @@ var Chess = function(fen) {
         var value = '';
 
         for (var i = 0; i < headers.length; i++) {
-          key = headers[i].replace(/^\[([A-Z][A-Za-z]*)\s.*\]$/, '$1');
-          value = headers[i].replace(/^\[[A-Za-z]+\s"(.*)"\]$/, '$1');
+          key = headers[i].replace(/^\[([A-Z][A-Za-z]*)\s.*\]$/, '');
+          value = headers[i].replace(/^\[[A-Za-z]+\s"(.*)"\]$/, '');
           if (trim(key).length > 0) {
             header_obj[key] = value;
           }
