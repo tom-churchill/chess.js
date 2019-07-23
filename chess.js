@@ -988,7 +988,7 @@ var Chess = function(fen) {
     }
 
     var move = old.move;
-    move.move_numer = old.move_number;
+    move.move_number = old.move_number;
     kings = old.kings;
     turn = old.turn;
     castling = old.castling;
@@ -1509,8 +1509,8 @@ var Chess = function(fen) {
         var value = '';
 
         for (var i = 0; i < headers.length; i++) {
-          key = headers[i].replace(/^\[([A-Z][A-Za-z]*)\s.*\]$/, '');
-          value = headers[i].replace(/^\[[A-Za-z]+\s"(.*)"\]$/, '');
+          key = headers[i].replace(/^\[([A-Z][A-Za-z]*)\s.*\]$/, '$1');
+          value = headers[i].replace(/^\[[A-Za-z]+\s"(.*)"\]$/, '$1');
           if (trim(key).length > 0) {
             header_obj[key] = value;
           }
@@ -1749,6 +1749,14 @@ var Chess = function(fen) {
       }
 
       return move_history;
+    },
+
+    getMoveNumber: function() {
+      return move_number;
+    },
+
+    getHalfMoveNumber: function() {
+      return half_moves;
     }
   };
 };
