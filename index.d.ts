@@ -486,6 +486,9 @@ export interface ChessInstance {
         verbose?: false;
     }): string[];
 
+    getMoveNumber(): number;
+    getHalfMoveNumber(): number;
+
     /**
      * Returns a list containing the moves of the current game.
      * Options is an optional parameter which may contain a 'verbose' flag.
