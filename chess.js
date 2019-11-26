@@ -406,7 +406,7 @@ var Chess = function(fen) {
   function set_header(args) {
     for (var i = 0; i < args.length; i += 2) {
       if (typeof args[i] === 'string' && typeof args[i + 1] === 'string') {
-        if (!(args[i] in headerOrder)) {
+        if (headerOrder.indexOf(args[i]) === -1) {
           headerOrder.push(args[i]);
         }
 
@@ -428,11 +428,11 @@ var Chess = function(fen) {
     if (fen !== DEFAULT_POSITION) {
       header['SetUp'] = '1';
       header['FEN'] = fen;
-      if (!('SetUp' in headerOrder)) {
-          headerOrder.push('SetUp');
+      if (headerOrder.indexOf("SetUp") === -1) {
+        headerOrder.push('SetUp');
       }
-      if (!('FEN' in headerOrder)) {
-          headerOrder.push('FEN');
+      if (headerOrder.indexOf("FEN") === -1) {
+        headerOrder.push('FEN');
       }
     } else {
       delete header['SetUp'];
