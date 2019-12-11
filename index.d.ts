@@ -370,7 +370,7 @@ export interface ChessInstance {
      * @returns The current header information after storing any values.
      */
     header(...args: string[]): Header;
-    getHeaderOrder(): [string];
+    getHeaderOrder(): Set<string>;
 
     /**
      * Returns a string containing an ASCII diagram of the current position.
