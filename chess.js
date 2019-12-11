@@ -167,7 +167,7 @@ var Chess = function(fen) {
   var move_number = 1;
   var history = [];
   var header = {};
-  var headerOrder = [];
+  var headerOrder = new Set();
 
   /* if the user passes in a fen string, load it, else default to
    * starting position
@@ -193,7 +193,7 @@ var Chess = function(fen) {
     history = [];
     if (!keep_headers) {
       header = {};
-      headerOrder = []
+      headerOrder.clear()
     }
     update_setup(generate_fen());
   }
@@ -406,9 +406,7 @@ var Chess = function(fen) {
   function set_header(args) {
     for (var i = 0; i < args.length; i += 2) {
       if (typeof args[i] === 'string' && typeof args[i + 1] === 'string') {
-        if (headerOrder.indexOf(args[i]) === -1) {
-          headerOrder.push(args[i]);
-        }
+        headerOrder.add(args[i])
 
         header[args[i]] = args[i + 1];
       }
@@ -428,15 +426,13 @@ var Chess = function(fen) {
     if (fen !== DEFAULT_POSITION) {
       header['SetUp'] = '1';
       header['FEN'] = fen;
-      if (headerOrder.indexOf("SetUp") === -1) {
-        headerOrder.push('SetUp');
-      }
-      if (headerOrder.indexOf("FEN") === -1) {
-        headerOrder.push('FEN');
-      }
+      headerOrder.add('SetUp')
+      headerOrder.add('FEN')
     } else {
       delete header['SetUp'];
       delete header['FEN'];
+      headerOrder.delete('SetUp')
+      headerOrder.delete('FEN')
     }
   }
 
