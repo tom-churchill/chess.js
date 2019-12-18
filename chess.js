@@ -193,7 +193,7 @@ var Chess = function(fen) {
     history = [];
     if (!keep_headers) {
       header = {};
-      headerOrder.clear()
+      headerOrder = new Set();
     }
     update_setup(generate_fen());
   }
